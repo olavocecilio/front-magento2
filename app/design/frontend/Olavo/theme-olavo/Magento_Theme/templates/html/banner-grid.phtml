@@ -1,0 +1,44 @@
+<?php
+/** @var \Magento\Framework\View\Element\BlockInterface $block */
+
+$bannerUm = 'banner_1_grade'; // Substitua 'seu_bloco_id' pelo ID do seu bloco estático
+$block = $this->getLayout()->createBlock(\Magento\Cms\Block\Block::class);
+$contentUm = $block->setBlockId($bannerUm)->toHtml();
+
+$bannerDois = 'banner_2_grade'; // Substitua 'seu_bloco_id' pelo ID do seu bloco estático
+$block = $this->getLayout()->createBlock(\Magento\Cms\Block\Block::class);
+$contentDois = $block->setBlockId($bannerDois)->toHtml();
+
+$bannerTres = 'banner_3_grade'; // Substitua 'seu_bloco_id' pelo ID do seu bloco estático
+$block = $this->getLayout()->createBlock(\Magento\Cms\Block\Block::class);
+$contentTres = $block->setBlockId($bannerTres)->toHtml();
+
+$bannerQuatro = 'banner_4_grade'; // Substitua 'seu_bloco_id' pelo ID do seu bloco estático
+$block = $this->getLayout()->createBlock(\Magento\Cms\Block\Block::class);
+$contentQuatro = $block->setBlockId($bannerQuatro)->toHtml();
+
+$bannerCinco = 'banner_5_grade'; // Substitua 'seu_bloco_id' pelo ID do seu bloco estático
+$block = $this->getLayout()->createBlock(\Magento\Cms\Block\Block::class);
+$contentCinco = $block->setBlockId($bannerCinco)->toHtml();
+?>
+
+<div class="banner-grid">
+    <h3>Conheça nossos diferenciais</h3>
+    <div class="banners">
+        <div id="banner-1" class="banner">
+            <?= $contentUm ?>
+        </div>
+        <div id="banner-2" class="banner">
+            <?= $contentDois ?>
+        </div>
+        <div id="banner-3" class="banner">
+            <?= $contentTres ?>
+        </div>
+        <div id="banner-4" class="banner">
+            <?= $contentQuatro ?>
+        </div>
+        <div id="banner-5" class="banner">
+            <?= $contentCinco ?>
+        </div>
+    </div>
+</div>

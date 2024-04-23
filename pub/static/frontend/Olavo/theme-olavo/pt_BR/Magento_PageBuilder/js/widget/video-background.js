@@ -1,0 +1,1 @@
+/home/olavo/hibrido/vendor/magento/module-page-builder/view/base/web/js/widget/video-background.js

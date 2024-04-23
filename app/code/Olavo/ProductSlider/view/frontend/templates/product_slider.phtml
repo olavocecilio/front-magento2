@@ -1,0 +1,80 @@
+<div class="product-slider">
+    <h3>Lançamentos</h3>
+    <div id="owl-two" class="owl-two owl-carousel owl-theme">
+        <!-- Os produtos serão carregados aqui -->
+    </div>
+</div>
+
+<script>
+    require(['jquery', 'owlcarousel'], function ($) {
+        $(document).ready(function () {
+            var owl = $('#owl-two');
+
+            // Função para carregar os produtos da categoria com ID 3 - Moda Feminina
+            function loadProducts() {
+                $.ajax({
+                    url: '<?php echo $block->getUrl("olavoproductslider/product/products", ["category_id" => 3]) ?>',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (response) {
+                        // Limpa os itens existentes antes de adicionar os novos
+                        owl.trigger('destroy.owl.carousel').removeClass('owl-loaded');
+                        owl.find('.owl-stage-outer').children().unwrap();
+
+                        // Adiciona os produtos ao carrossel
+                        response.forEach(function (product) {
+                            var productHTML = '<div class="item">';
+                            var priceBrl = parseFloat(product.price).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+                            var price6x = parseFloat(product.price6x).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+                            var specialPrice = parseFloat(product.special_price).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+                            productHTML += '<img src="' + product.image + '" alt="' + product.name + '" class="recortar-imagem">';
+                            productHTML += '<h4>' + product.name + '</h4>';
+                            if (product.special_price != null) {
+                                productHTML += '<div class="info_price">';
+                                productHTML += '<p class="price">' + specialPrice + '</p>';
+                                productHTML += '<p class="special-price">' + priceBrl + '</p>';
+                                var discountPercentage = Math.round(((product.price - product.special_price) / product.price) * 100);
+                                productHTML += '<p class="discount-label">' + discountPercentage + '% OFF</p>';
+                                productHTML += '</div>';
+                            } else {
+                                productHTML += '<p class="price">' + priceBrl + '</p>';
+                            }
+                            productHTML += '<p class="price_6">Ou 6X de ' + price6x + ' sem juros</p>';
+                            productHTML += '</div>';
+                            owl.append(productHTML);
+                        });
+
+                        // Inicializa o Owl Carousel novamente após adicionar os produtos
+                        owl.owlCarousel({
+                            loop: true,
+                            margin: 15,
+                            responsiveClass: true,
+                            nav: true,
+                            responsive: {
+                                0: {
+                                    items: 1,
+                                    nav: true
+                                },
+                                600: {
+                                    items: 2,
+                                    nav: false
+                                },
+                                1000: {
+                                    items: 4,
+                                    nav: true,
+                                    loop: false
+                                }
+                            }
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(status, error);
+                    }
+                });
+            }
+
+            // Carrega os produtos ao iniciar a página
+            loadProducts();
+        });
+    });
+</script>

@@ -1,0 +1,1 @@
+/home/olavo/hibrido/vendor/magento/module-security/view/base/web/js/escaper.js

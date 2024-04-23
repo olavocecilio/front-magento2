@@ -1,0 +1,1 @@
+/home/olavo/hibrido/app/code/Olavo/ProductSlider/view/frontend/web/js/owl.carousel.js

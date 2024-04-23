@@ -1,0 +1,1 @@
+/home/olavo/hibrido/vendor/magento/theme-adminhtml-backend/web/js/theme.js

@@ -1,0 +1,7 @@
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="olavo.slider" before="main.content" template="Olavo_BannerSlider::slider.phtml" />
+        </referenceContainer>
+    </body>
+</page>

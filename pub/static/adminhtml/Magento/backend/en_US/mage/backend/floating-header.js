@@ -1,0 +1,1 @@
+/home/olavo/hibrido/lib/web/mage/backend/floating-header.js
